@@ -105,8 +105,13 @@ public class MainActivity extends AppCompatActivity{
                 double result = inr_amount * rates_from_INR[to_index];
 
                 String result2 = String.format("%s%,.2f", result);
-                result.setText(result2);
+                result.set_text(result2);
 
+                double singleUnitRate = ratesFromINR[to_index] / ratesFromINR[from_index];
+                double reverseUnitRate = 1 / singleUnitRate;
+
+                String base_curr = currencies[from_index];
+                String target_curr = currencies[to_index];
             }
         });
     }
