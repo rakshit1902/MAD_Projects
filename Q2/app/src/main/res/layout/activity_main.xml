@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C0C0C5"
+    android:background="#F2F2F7"
     android:orientation="vertical"
     tools:context=".MainActivity" >
 
@@ -13,19 +13,22 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#B8B9BD"
+        android:background="#FFFFFF"
+        app:tabIndicatorColor="#1A1A1A"
+        app:tabSelectedTextColor="#1A1A1A"
+        app:tabTextColor="#888888"
         app:tabGravity="fill"
         app:tabMode="fixed">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:text="Audio" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            android:text="Video" />
 
     </com.google.android.material.tabs.TabLayout>
 
