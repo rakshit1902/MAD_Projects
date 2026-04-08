@@ -109,8 +109,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
-                android:tint="#000000"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@android:drawable/ic_media_previous"
+                app:tint="#000000" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -123,14 +123,16 @@
             app:cardElevation="4dp"
             app:cardBackgroundColor="#1A1A1A">
 
-            <ImageButton
+            <Button
                 android:id="@+id/btn_video_play"
-                android:layout_width="match_parent"
+                android:layout_width="140dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
-                android:tint="#FFFFFF"
-                app:srcCompat="@android:drawable/ic_media_play" />
+                android:text="PLAY"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -149,8 +151,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
-                android:tint="#000000"
-                app:srcCompat="@android:drawable/ic_media_next" />
+                app:srcCompat="@android:drawable/ic_media_next"
+                app:tint="#000000" />
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
@@ -165,23 +167,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_gravity="center_vertical"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="#E8E8EE">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="16dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/round_repeat_24"
-                android:tint="#000000" />
-        </androidx.cardview.widget.CardView>
 
         <View
             android:layout_width="0dp"
@@ -202,8 +187,8 @@
                 android:background="@android:color/transparent"
                 android:padding="14dp"
                 android:scaleType="centerInside"
-                android:tint="#000000"
-                app:srcCompat="@android:drawable/ic_menu_upload" />
+                app:srcCompat="@android:drawable/ic_menu_upload"
+                app:tint="#000000" />
 
         </androidx.cardview.widget.CardView>
 

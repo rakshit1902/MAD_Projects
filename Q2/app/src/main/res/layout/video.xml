@@ -121,14 +121,16 @@
             app:cardElevation="4dp"
             app:cardBackgroundColor="#1A1A1A">
 
-            <ImageButton
+            <Button
                 android:id="@+id/btn_video_play"
-                android:layout_width="match_parent"
+                android:layout_width="140dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@android:color/transparent"
-                app:tint="#FFFFFF"
-                app:srcCompat="@android:drawable/ic_media_play" />
+                android:text="PLAY"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -186,5 +188,4 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>
