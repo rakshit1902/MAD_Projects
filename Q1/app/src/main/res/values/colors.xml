@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="app_background">#FAFAFA</color>
-<color name="card_background">#FFFFFF</color>
-<color name="text_main">#1A1A1A</color>
+    <color name="app_background">#F5F5F5</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_main">#000000</color>
 
-<color name="convert_btn_bg">#1A1A1A</color>
-<color name="convert_btn_text">#FFFFFF</color>
+    <color name="convert_btn_bg">#000000</color>
+    <color name="convert_btn_text">#FFFFFF</color>
 </resources>

@@ -7,62 +7,46 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-        <!-- Full image preview -->
+        <!-- Full-size image preview -->
         <ImageView
             android:id="@+id/detailImageView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:layout_marginBottom="16dp"/>
-        <TextView
-            android:layout_width="match_parent"
+        <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Image Name:"
-            android:textStyle="bold"
+            android:text="Image Name:" android:textStyle="bold"
             android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/tvImageName"
+        <TextView android:id="@+id/tvImageName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:paddingBottom="12dp"/>
-        <TextView
-            android:layout_width="match_parent"
+            android:textSize="15sp" android:paddingBottom="12dp"/>
+        <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Image Path:"
-            android:textStyle="bold"
+            android:text="Image Path:" android:textStyle="bold"
             android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/tvImagePath"
+        <TextView android:id="@+id/tvImagePath"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:paddingBottom="12dp"/>
-        <TextView
-            android:layout_width="match_parent"
+            android:textSize="15sp" android:paddingBottom="12dp"/>
+        <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Image Size:"
-            android:textStyle="bold"
+            android:text="Image Size:" android:textStyle="bold"
             android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/tvImageSize"
+        <TextView android:id="@+id/tvImageSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:paddingBottom="12dp"/>
-        <TextView
-            android:layout_width="match_parent"
+            android:textSize="15sp" android:paddingBottom="12dp"/>
+        <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Date Taken:"
-            android:textStyle="bold"
+            android:text="Date Taken:" android:textStyle="bold"
             android:textSize="16sp"/>
-        <TextView
-            android:id="@+id/tvImageDate"
+        <TextView android:id="@+id/tvImageDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:paddingBottom="24dp"/>
-        <!-- Delete button -->
+            android:textSize="15sp" android:paddingBottom="24dp"/>
+        <!-- Delete button (red) -->
         <Button
             android:id="@+id/btnDeleteImage"
             android:layout_width="match_parent"

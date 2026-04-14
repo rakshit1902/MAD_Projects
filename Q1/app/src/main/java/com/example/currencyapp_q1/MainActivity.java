@@ -1,30 +1,24 @@
 package com.example.currencyapp_q1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 
 public class MainActivity extends AppCompatActivity {
-
     EditText enter_amount;
     TextView result;
     Spinner spinner_from, spinner_to;
-    CardView btn_convert, btn_swap;
-    Switch switchDarkMode;
+    CardView btn_convert, btn_settings;
 
     String[] currencies = {"USD", "EUR", "INR", "JPY", "GBP", "AUD"};
-    double[] rates_from_INR = {0.0120, 0.0103, 1.0, 1.7958, 0.0095, 0.0163};
+    double[] rates_from_INR = {0.0106723586, 0.0091449474, 1.0, 1.724137931, 0.007930843, 0.0151653018};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,93 +30,15 @@ public class MainActivity extends AppCompatActivity {
         spinner_to = findViewById(R.id.spinner_to);
         result = findViewById(R.id.result);
         btn_convert = findViewById(R.id.btn_convert);
-        btn_swap = findViewById(R.id.btn_swap);
-        switchDarkMode = findViewById(R.id.switch_dark_mode);
+        btn_settings = findViewById(R.id.btn_settings);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, currencies);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        ArrayAdapter adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_dropdown_item, currencies);
         spinner_from.setAdapter(adapter);
         spinner_to.setAdapter(adapter);
 
-        spinner_from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView parent, View view, int position, long id) {
-                if (view != null) {
-                    ((TextView) view).setTextColor(getColor(R.color.text_main));
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView parent) {}
-        });
-
-        spinner_to.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView parent, View view, int position, long id) {
-                if (view != null) {
-                    ((TextView) view).setTextColor(getColor(R.color.text_main));
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView parent) {}
-        });
-
-        spinner_from.post(new Runnable() {
-            @Override
-            public void run() {
-                View view = spinner_from.getSelectedView();
-                if (view != null) {
-                    ((TextView) view).setTextColor(getColor(R.color.text_main));
-                }
-            }
-        });
-
-        spinner_to.post(new Runnable() {
-            @Override
-            public void run() {
-                View view = spinner_to.getSelectedView();
-                if (view != null) {
-                    ((TextView) view).setTextColor(getColor(R.color.text_main));
-                }
-            }
-        });
-
         spinner_from.setSelection(0);
-        spinner_to.setSelection(1);
-
-        enter_amount.setText("0.00");
-
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            switchDarkMode.setChecked(true);
-        } else {
-            switchDarkMode.setChecked(false);
-        }
-
-        switchDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
-            }
-        });
-
-        btn_swap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int from_pos = spinner_from.getSelectedItemPosition();
-                int to_pos = spinner_to.getSelectedItemPosition();
-
-                spinner_from.setSelection(to_pos);
-                spinner_to.setSelection(from_pos);
-
-                performConversion();
-            }
-        });
+        spinner_to.setSelection(2);
 
         btn_convert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,25 +46,31 @@ public class MainActivity extends AppCompatActivity {
                 performConversion();
             }
         });
+
+        btn_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void performConversion() {
         String amountStr = enter_amount.getText().toString().trim();
-
         if (amountStr.isEmpty()) {
-            Toast.makeText(MainActivity.this, "Enter an amount", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter an amount", Toast.LENGTH_SHORT).show();
             return;
         }
 
         double amount = Double.parseDouble(amountStr);
+        int fromIndex = spinner_from.getSelectedItemPosition();
+        int toIndex = spinner_to.getSelectedItemPosition();
 
-        int from_index = spinner_from.getSelectedItemPosition();
-        int to_index = spinner_to.getSelectedItemPosition();
+        // Convert input to INR first, then to target currency [cite: 3467]
+        double inrBase = amount / rates_from_INR[fromIndex];
+        double converted = inrBase * rates_from_INR[toIndex];
 
-        double inr_amount = amount / rates_from_INR[from_index];
-        double calculatedMath = inr_amount * rates_from_INR[to_index];
-
-        String resultString = String.format("%,.2f", calculatedMath);
-        result.setText(resultString);
+        result.setText(String.format("%.2f", converted));
     }
 }
